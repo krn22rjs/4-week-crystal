@@ -39,8 +39,8 @@ var lossCount = 0;
 
 
 // helper function for getting random numbers
-var getRandom = function(min,max){
-  return Math.floor.(Math.random() *( max - min + 1))+ min;
+var getRandom = function(min, max){
+  return Math.floor.(Math.random() * (max - min + 1))+ min;
 }
 
 // starts the game
@@ -70,24 +70,43 @@ console.log("Blue: " + crystal.blue.value + " |green: " + crystal.green.value + 
 }
 
 
+// respond to the clicks  on the crystals
+var addValues = function(crystal){
+
+//change the current score
+  currentScore = currentScore + crystal.value;
+
+
+//change the html to reflect changes to currentScore
+$("#yourScore").html(currentScore);
+
+  // testing console
+  console.log("your score" + currentScore);
+}
+
 // MAIN PROCESS
 //_________________________________________________________________________________
 // strat the game 
 startGame();
 $("#blue").click(function(){
-  alert("test");
+
+  addValues(crystal.blue);
+
 });
 
 $("#green").click(function(){
-  alert("test");
+  
+  addValues(crystal.green);
+
 });
 
 $("#red").click(function(){
-  alert("test");
+  addValues(crystal.red);
+
 });
 
 $("#yellow").click(function(){
-  alert("test");
+  addValues(crystal.yellow);
 });
 
 //alert("testing");
