@@ -40,7 +40,7 @@ var lossCount = 0;
 
 // helper function for getting random numbers
 var getRandom = function(min, max){
- // return Math.floor.(Math.random() * (max - min + 1)) + min;
+ // return Math.floor.(Math.random() * (max - min + 1)) + min; wasn't working because of addition (.)
 
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -49,7 +49,7 @@ var getRandom = function(min, max){
 var startGame = function(){
 
   //reset the current score
-  var currentScore = 0;
+   currentScore = 0;
 
   // set a new targe score (between 19-120)
 
@@ -87,15 +87,37 @@ $("#yourScore").html(currentScore);
 checkWin();
 
   // testing console
-  console.log("your score" + currentScore);
+  console.log("Your Score " + currentScore);
 }
 // check if user won or lost  and reset the game
 var checkWin = function(){
 
 // check if currentscore is larger than targetscore
 if (currentScore > targetScore) {
-    alert("sorry, You lost");
-    console.log("you Lost");
+    alert("Sorry, you lost");
+    console.log("You Lost");
+
+    //add to the loss counter
+    lossCount++
+
+    // displaying loss count
+    $("#lossCount").html(lossCount);
+
+    //restart game
+    startGame();
+  }
+else if (currentScore == targetScore) {
+  alert("Yay!!! You Won!");
+  console.log("Yay!!! You won!");
+
+
+  //add to loss counter
+  winCount++; 
+
+
+  // display win count
+  $("#winCount").html(winCount);
+    startGame();
 }
 
 }
