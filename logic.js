@@ -40,7 +40,9 @@ var lossCount = 0;
 
 // helper function for getting random numbers
 var getRandom = function(min, max){
-  return Math.floor.(Math.random() * (max - min + 1))+ min;
+ // return Math.floor.(Math.random() * (max - min + 1)) + min;
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // starts the game
@@ -80,8 +82,22 @@ var addValues = function(crystal){
 //change the html to reflect changes to currentScore
 $("#yourScore").html(currentScore);
 
+
+// check win function
+checkWin();
+
   // testing console
   console.log("your score" + currentScore);
+}
+// check if user won or lost  and reset the game
+var checkWin = function(){
+
+// check if currentscore is larger than targetscore
+if (currentScore > targetScore) {
+    alert("sorry, You lost");
+    console.log("you Lost");
+}
+
 }
 
 // MAIN PROCESS
